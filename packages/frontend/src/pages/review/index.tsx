@@ -34,7 +34,7 @@ const ReviewPage = () => {
         <h1 className="text-2xl">My Reviews</h1>
         <div className="flex flex-wrap justify-center max-h-96 overflow-y-auto">
           {reviewData?.userReviews?.map((review: any) => (
-            <div key={review.id} className="w-full sm:w-1/2 md:w-1/3 p-2">
+            <div key={review.id} className="w-full sm:w-1/2 p-2">
               <Review {...review} />
             </div>
           ))}
