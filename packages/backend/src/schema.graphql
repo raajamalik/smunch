@@ -1,0 +1,137 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Address {
+  city: String!
+  country: String!
+
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  id: ID!
+  state: String!
+  street: String!
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+  zip: String!
+}
+
+input CreateReviewInput {
+  authorId: Int
+  content: String
+  photos: [Int!]
+  productId: Int
+  rating: Int!
+  restaurantId: Int!
+  title: String!
+}
+
+type Cuisine {
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createReview(createReviewInput: CreateReviewInput!): Review!
+}
+
+type Photo {
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  id: ID!
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+  url: String!
+}
+
+type Product {
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  cuisine: Cuisine!
+  description: String!
+  id: ID!
+  name: String!
+  photos: [Photo!]
+  price: Int!
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+}
+
+type Query {
+  me(userInput: UserInput!): User!
+  search(searchInput: SearchInput!): [SearchOutput!]!
+  topPick: [SearchOutput!]!
+  userReviews(userReviewInput: UserReviewInput!): [Review!]!
+}
+
+type Review {
+  authorId: Int
+  content: String
+
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  id: ID!
+  rating: Int!
+  restaurantId: Int
+  title: String!
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+}
+
+input SearchInput {
+  cuisine: Int
+  name: String = ""
+}
+
+type SearchOutput {
+  averageRating: Float
+
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  id: ID!
+  latestReview: String
+  name: String
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+}
+
+type User {
+  addresses: [Address!]
+  avatar: String
+
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  email: String!
+  firstName: String!
+  id: ID!
+  lastName: String!
+  password: String!
+  reviews: [Review!]
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+}
+
+input UserInput {
+  email: String
+  id: Int
+}
+
+input UserReviewInput {
+  userId: Int!
+}

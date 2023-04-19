@@ -1,0 +1,20 @@
+{
+  "name": "smunch",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently -n \"Frontend,Backend\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run frontend\" \"npm run backend\"",
+    "start-old": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "frontend": "npm run dev --prefix packages/frontend",
+    "backend": "npm run start:dev --prefix packages/backend"
+  },
+  "private": true,
+  "devDependencies": {
+    "@nrwl/nx-cloud": "latest",
+    "concurrently": "^8.0.1",
+    "nx": "15.9.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
